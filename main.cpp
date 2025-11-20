@@ -126,6 +126,41 @@ void mergeSorted(const int*a,int n,const int*b,int m,int*out) {
     }
 }
 
+//pr11
+int removeValue(int*arr,int size,int val) {
+int*write=arr;
+int*read=arr;
+for(int i=0;i<size;i++) {
+if(*read!=val) {
+*write=*read;
+write++;
+}
+read++;
+}
+return (int)(write-arr);
+}
+
+//pr12
+bool identical(const int*a,int**bptr,int size) {
+const int*p=a;
+int*qb=*bptr;
+for(int i=0;i<size;i++) {
+if(*p!=*(qb+1))  return false;
+p++;
+}
+return true;
+}
+
+//pr14
+int cstrlen(char**s) {
+char*p=*s;
+int len=0;
+while(*p!='\0') {
+++len;
+++p;
+}
+return len;
+}
 
 
 
@@ -245,6 +280,52 @@ int main() {
     int out[g+y];
     mergeSorted(w,g,z,y,out);
     for (int i=0;i<g+y;i++) cout<<out[i]<<(i+1==g+y? "":" ");
+
+//pr11
+int n1;
+cin>>n1;
+int a1[n1];
+for(int i=0;i<n1;i++) cin>>a1[i];
+int val;
+cin>>val;
+int newSize=removeValue(a1,n1,val);
+for(int i=0;i<newSize;i++) {
+cout<<a1[i]<<(i+1==newSize?"":" ");
+}
+
+//pr12
+int n2;
+cin>>n2;
+int a2[n2];
+for(int i=0;i<n2;i++) {
+cin>>a2[i];
+}
+int b2[n2];
+for(int i=0;i<n2;i++) {
+cin>>b2[i];
+}
+int*pb2=b2;
+cout<<identical(a2,&pb2,n2);
+
+//pr13
+int*p1=NULL;
+int*p2=NULL;
+if(p1==nullptr){
+cout<<"is null"<<endl;
+} else {
+cout<<"not null"<<endl;
+}
+if(p2==nullptr) {
+cout<<"is null"<<endl;
+} else {
+cout<<"not null"<<endl;
+}
+
+//pr14
+char buf[1000];
+cin>>buf;
+char*p3=buf;
+cout<<cstrlen(&p3);
 
 
 
